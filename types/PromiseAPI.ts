@@ -57,6 +57,8 @@ import { User } from '../models/User';
 import { UserIdentityBody } from '../models/UserIdentityBody';
 import { WebButton } from '../models/WebButton';
 import { ObservableDefaultApi } from './ObservableAPI';
+import { BeginLiveActivityRequest } from "../models/BeginLiveActivityRequest";
+import { BeginLiveActivitySuccessResponse } from "../models/BeginLiveActivitySuccessResponse";
 
 import { DefaultApiRequestFactory, DefaultApiResponseProcessor} from "../apis/DefaultApi";
 export class PromiseDefaultApi {
@@ -367,6 +369,17 @@ export class PromiseDefaultApi {
      */
     public updateApp(appId: string, app: App, _options?: Configuration): Promise<App> {
         const result = this.api.updateApp(appId, app, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * Remotely start a Live Activity.
+     * @param appId The OneSignal App ID for your app.  Available in Keys &amp; IDs.
+     * @param activityType Indicates which Live Activity to start.
+     * @param beginLiveActivityRequest
+     */
+    public beginLiveActivity(appId: string, activityType: string, beginLiveActivityRequest: BeginLiveActivityRequest, _options?: Configuration): Promise<BeginLiveActivitySuccessResponse> {
+        const result = this.api.beginLiveActivity(appId, activityType, beginLiveActivityRequest, _options);
         return result.toPromise();
     }
 
