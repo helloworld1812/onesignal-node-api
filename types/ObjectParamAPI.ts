@@ -56,6 +56,8 @@ import { UpdateUserRequest } from '../models/UpdateUserRequest';
 import { User } from '../models/User';
 import { UserIdentityBody } from '../models/UserIdentityBody';
 import { WebButton } from '../models/WebButton';
+import { BeginLiveActivityRequest } from "../models/BeginLiveActivityRequest";
+import { BeginLiveActivitySuccessResponse } from "../models/BeginLiveActivitySuccessResponse";
 
 import { ObservableDefaultApi } from "./ObservableAPI";
 import { DefaultApiRequestFactory, DefaultApiResponseProcessor} from "../apis/DefaultApi";
@@ -570,6 +572,28 @@ export interface DefaultApiUpdateLiveActivityRequest {
     updateLiveActivityRequest: UpdateLiveActivityRequest
 }
 
+export interface DefaultApiBeginLiveActivityRequest {
+    /**
+     *
+     * @type string
+     * @memberof DefaultApiBeginLiveActivityRequest
+     */
+    appId: string
+    /**
+     * Indicates which Live Activity to start.
+     * @type string
+     * @memberof DefaultApiBeginLiveActivityRequest
+     */
+    activityType: string
+
+    /**
+     *
+     * @type BeginLiveActivityRequest
+     * @memberof DefaultApiBeginLiveActivityRequest
+     */
+    beginLiveActivityRequest: BeginLiveActivityRequest
+}
+
 export interface DefaultApiUpdateSubscriptionRequest {
     /**
      * 
@@ -855,6 +879,14 @@ export class ObjectDefaultApi {
      */
     public updateApp(param: DefaultApiUpdateAppRequest, options?: Configuration): Promise<App> {
         return this.api.updateApp(param.appId, param.app,  options).toPromise();
+    }
+
+    /**
+     * Remotely start a Live Activity.
+     * @param param the request object
+     */
+    public beginLiveActivity(param: DefaultApiBeginLiveActivityRequest, options?: Configuration): Promise<BeginLiveActivitySuccessResponse> {
+        return this.api.beginLiveActivity(param.appId, param.activityType, param.beginLiveActivityRequest, options).toPromise();
     }
 
     /**
