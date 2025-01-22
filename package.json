@@ -22,7 +22,8 @@
   "typings": "./dist/index.d.ts",
   "scripts": {
     "build": "tsc",
-    "prepare": "npm run build"
+    "prepare": "npm run build",
+    "safe-publish": "./tools/safe-publish.sh"
   },
   "dependencies": {
     "@types/node": "^22.10.1",
