@@ -3,6 +3,10 @@
   "version": "5.0.0-alpha-02",
   "description": "OpenAPI client for @onesignal/node-onesignal",
   "author": "OpenAPI-Generator Contributors",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:helloworld1812/onesignal-node-api.git"
+  },
   "keywords": [
     "fetch",
     "typescript",
@@ -18,7 +22,8 @@
   "typings": "./dist/index.d.ts",
   "scripts": {
     "build": "tsc",
-    "prepare": "npm run build"
+    "prepare": "npm run build",
+    "safe-publish": "./tools/safe-publish.sh"
   },
   "dependencies": {
     "@types/node": "^22.10.1",
